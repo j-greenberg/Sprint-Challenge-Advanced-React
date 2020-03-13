@@ -4,6 +4,7 @@ import "./App.css";
 import List from "./components/List";
 import Card from "./components/Card";
 import axios from "axios";
+import Login from "./components/Login";
 
 class App extends React.Component {
   state = {
@@ -30,6 +31,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Sprint Challenge - Advanced React</h1>
+        <Login />
         <h2>Player Data: </h2>
         <List players={this.state.players} />
         {/* {this.state.followers.map(object => (
