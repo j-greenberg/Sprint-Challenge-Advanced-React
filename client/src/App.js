@@ -1,30 +1,44 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import List from "./components/List";
-import Card from "./components/Card";
-import axios from "axios";
 import Login from "./components/Login";
+import List from "./components/List";
+import axios from "axios";
 
 class App extends React.Component {
-  state = {
-    players: []
-  };
+  _isMounted = false;
+
+  constructor() {
+    super();
+
+    this.state = {
+      isLoading: true,
+      players: []
+    };
+  }
 
   componentDidMount() {
+    this._isMounted = true;
+
     axios
       .get(`http://localhost:5000/api/players`)
-
       .then(response => {
         console.log("Players successfully retrieved:", response.data);
-        this.setState({
-          players: response.data
-        });
+
+        if (this._isMounted) {
+          this.setState({
+            players: response.data,
+            isLoading: false
+          });
+        }
       })
 
       .catch(error => {
         console.log("Error in retrieving player data: ", error);
       });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

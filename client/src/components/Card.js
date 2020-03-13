@@ -1,8 +1,6 @@
 import React from "react";
 
 const Card = props => {
-  console.log("Card received props: ", props.players);
-
   return (
     <div>
       <h2>Name: {props.name}</h2>

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 
 const List = props => {
+  List.defaultProps = [];
   console.log("List received props: ", props.players);
 
   return (
@@ -15,9 +16,6 @@ const List = props => {
           searches={object.searches}
         />
       ))}
-      {/* {this.state.followers.map(object => (
-          <Card details={object} />
-        ))} */}
     </div>
   );
 };
